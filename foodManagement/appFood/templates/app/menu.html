@@ -1,0 +1,127 @@
+{% extends 'app/base.html'%}
+{% load static%}
+{% block title%} menu{% endblock%}
+{% block content%}
+
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#manu .main{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 0px;
+}
+
+#manu .item{
+
+    width: 18%;
+    padding-top: 5px;
+    border: 1px solid gray;
+
+
+}
+#manu .item img{
+    height: 180px;
+    width:190px;
+
+
+}
+
+#manu .item button{
+    margin-top: 10px;
+    padding: 7px 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #7E5E5D;
+}
+
+#manu .item button a{
+
+    text-decoration: none;
+    color:white;
+
+
+}
+
+
+
+
+</style>
+<!-- Page Header Start -->
+        <div class="page-header mb-0">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Food Menu</h2>
+                    </div>
+                    <div class="col-12">
+                        <a href="">Home</a>
+                        <a href="">Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page Header End -->
+        <!-- Menu Start -->
+        <div class="menu">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Food Menu</p>
+                    <h2>Delicious Food Menu</h2>
+                </div>
+
+        </div>
+        </div>
+
+        <!-- Menu End -->
+
+
+
+
+<!--slide 1-->
+<br>
+<section id="manu">
+  <div class="container">
+
+  <div class="main">
+      {% for bur  in  burger%}
+  <div class="item">
+      <img src="{{bur.image.url}}" alt="" height="200px"><br><span class="fw-bold">{{bur.name}}</span><br><span class="fs-5">Price: {{bur.selling_price}}</span><br><span class="fs-5">Discount Price: {{bur.discount_price}}</span><br>
+      <button><a href="">Add Cart</a> </button>
+      <button style="background-color:#eab676; margin-left: 10px;"><a href="" >View Cart</a> </button>
+
+    </div>
+        {% endfor %}
+  </div>
+
+</div>
+</section>
+<br><br>
+
+
+<!--slide 2-->
+<br>
+<section id="manu">
+  <div class="container">
+
+  <div class="main">
+      {% for piz  in  pizza%}
+  <div class="item">
+      <img src="{{piz.image.url}}" alt="" height="200px"><br><span class="fw-bold">{{piz.name}}</span><br><span class="fs-5">Price: {{piz.selling_price}}</span><br><span class="fs-5">Discount Price: {{piz.discount_price}}</span><br>
+      <button><a href="">Add Cart</a> </button>
+      <button style="background-color:#eab676; margin-left: 10px;"><a href="" >View Cart</a> </button>
+
+    </div>
+        {% endfor %}
+  </div>
+
+</div>
+</section>
+<br><br>
+
+{% endblock %}

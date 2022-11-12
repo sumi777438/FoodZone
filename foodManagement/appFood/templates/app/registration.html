@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Food Zone|{% block title%}{% endblock%}</title>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport">
+        <meta content="Free Website Template" name="keywords">
+        <meta content="Free Website Template" name="description">
+
+        <!-- Favicon -->
+        <link href="/static/img/favicon.ico" rel="icon">
+
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet">
+
+        <!-- CSS Libraries -->
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+        <link href="/static/animate/animate.min.css" rel="stylesheet">
+        <link href="/static/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+        <link href="/static/flaticon/font/flaticon.css" rel="stylesheet">
+        <link href="/static/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+        <!-- Template Stylesheet -->
+        <link href="/static/css/style.css" rel="stylesheet">
+    <style>
+        .container{
+            width: 1320px;
+        }
+
+        #reg_from .reg_bg{
+            background: url(/static/img/carousel-1.jpg) no-repeat center;
+            background: cover;
+            color:#000;
+
+        }
+
+
+            #reg_from form {
+
+                width: 32%;
+                margin: auto;
+                padding-top: 159px;
+                padding-bottom: 159px;
+            }
+             .nav-link{
+        color:black!important;
+        }
+    </style>
+
+    </head>
+
+
+    <body>
+        <!-- Nav Bar Start -->
+        <section id="registration">
+        <div class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                <a href="index.html" class="navbar-brand">Food <span>Zone</span></a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                    <div class="navbar-nav mx-auto">
+                        <a href="{% url 'home'%}" class="nav-item nav-link active">Home</a>
+                        <a href="{% url 'about'%}" class="nav-item nav-link">About</a>
+                        <a href="{% url 'feature'%}" class="nav-item nav-link">Feature</a>
+                        <a href="{%url 'team'%}" class="nav-item nav-link">Chef</a>
+                        <a href="{% url 'menu'%}" class="nav-item nav-link">Menu</a>
+                        <a href="{%url 'contact'%}" class="nav-item nav-link">Contact</a>
+                        {% if user.is_authenticated %}
+                        <div class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i></a>
+                            <div class="dropdown-menu">
+                                <a href="{% url 'blog'%}" class="dropdown-item">Blog Grid</a>
+                                <a href="{% url 'single'%}" class="dropdown-item">Blog Detail</a>
+                            </div>
+                        </div>
+                        {%else%}
+                        <a href="{%url 'registration'%}" class="nav-link " ><i class="fa fa-user"></i></a>
+                        {%endif%}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Nav Bar End -->
+
+            </section>
+
+
+        <section id="reg_from">
+            <div class="reg_bg">
+                <div class="container">
+
+                <form action="" method="POST">
+                     <h1>Sign Up</h1>
+                    <hr>
+                     {% if messages%}
+                       {% for message in messages %}
+                        <p class="alert alert-{{message.tags}} mb-5">{{message}}</p>
+                        {% endfor %}
+                    {% endif%}
+                    {% csrf_token %}
+                    <div class="mb-3">
+                      <label for="" class="form-label">Your Name</label>
+                      <input type="text" class="form-control" id="name" name="name" aria-describedby="emailHelp" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                     <div class="mb-3">
+                      <label for="" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="pass" name="pass" required>
+                    </div>
+                       <div class="mb-3">
+                      <label for="" class="form-label">Confirm-Password</label>
+                      <input type="password" class="form-control" id="re-pass" name="re-pass" required>
+                    </div>
+                       <div class="mb-3">
+                      <label for="" class="form-label">Contact</label>
+                      <input type="text" class="form-control" id="number" name="number" required>
+                    </div>
+                    <div class="text-center text-primary fw-bold"><small>Create New Account? <a href="{% url 'login'%}"
+                        class="text-danger">Login Now</a> </small></div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+            </div>
+            </div>
+        </section>
+    </body>
+    </div>
+
+
+</body>
+
+</html>
+        <!-- Nav Bar End -->
